@@ -7,9 +7,11 @@ let $: any;
 
 function translate(text: string) {
   // 编码
-  let keywords = encodeURIComponent(text);
+  let keywords = encodeURIComponent(text),
+    // fixed: 有道传递错误参数不会直接机器翻译bug
+    to = language === 'zh-cn' ? '' : `/${language}`;
 
-  return got.get(`http://www.youdao.com/w/${language}/${keywords}`).then((res: any) => {
+  return got.get(`http://www.youdao.com/w${to}/${keywords}`).then((res: any) => {
     const body = parser(res.body);
     let translate: string = '';
     if (body.isWord) {
