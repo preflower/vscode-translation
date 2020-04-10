@@ -1,14 +1,28 @@
 {
 	"name": "vscode-translation",
-	"displayName": "easy-translation",
+	"displayName": "Easy Translator",
 	"description": "A simple translation extension for VS Code",
 	"version": "0.0.1",
+	"publisher": "preflower",
 	"engines": {
 		"vscode": "^1.43.0"
 	},
+	"keywords": [
+		"翻译",
+		"translator",
+		"translation",
+		"translate",
+		"language"
+	],
+	"license": "MIT",
 	"categories": [
 		"Other"
 	],
+	"icon": "assets/icon.jpg",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/preflower/vscode-translation.git"
+	},
 	"activationEvents": [
 		"workspaceContains:*.*"
 	],
@@ -16,12 +30,12 @@
 	"contributes": {
 		"hoverProvider": "true",
 		"configuration": {
-			"title": "Easy Translation",
+			"title": "Easy Translator",
 			"properties": {
-				"easy-translation.defaultLanguage": {
+				"easy-translator.defaultLanguage": {
 					"type": "string",
 					"default": "zh-cn",
-					"markdownDescription": "配置要转换的语言，有道默认互换(因为有道转换规则 中-转换语言)，谷歌只支持单方向转换"
+					"description": "配置要转换的语言，有道默认互换(因为有道转换规则 中-转换语言)，谷歌只支持单方向转换"
 				}
 			}
 		}

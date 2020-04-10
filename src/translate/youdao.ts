@@ -1,7 +1,7 @@
 const vscode = require('vscode');
 const got = require("got");
 const cheerio = require("cheerio");
-const language = vscode.workspace.getConfiguration().get('easy-translation.defaultLanguage')
+const language = vscode.workspace.getConfiguration().get('easy-translator.defaultLanguage')
 
 let $: any;
 

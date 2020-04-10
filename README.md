@@ -1,16 +1,18 @@
-# vscode-translation
+ # vscode-translation
 
 A simple translation extension for VS Code
 
+![Easy Translator](./assets/screenshot.gif)
+
 ## How to work
 
-Search `easy-translation` in Extensions and install it
+Search `Easy Translator` in Extensions and install it
 
 ## Extension Settings
 
 This extension contributes the following settings:
 
-* `easy-translation.defaultLanguage`: set the language to be translated.
+* `easy-translator.defaultLanguage`: set the language to be translated.
 
 ## Release Notes
 
