@@ -13,14 +13,20 @@ export function activate(context: vscode.ExtensionContext) {
     { scheme: "file" },
     {
       provideHover: async (document, position, token) => {
+        const result = [];
         let editor = vscode.window.activeTextEditor as any,
           selectionText = editor.document.getText(editor.selection),
           resultText = '';
         if (selectionText) {
           let youdaoResult = await youdao(selectionText);
           let googleResult = await google(selectionText);
-          resultText = `${googleResult} \n\n ${youdaoResult}`;
+          if (youdaoResult) result.push(youdaoResult);
+          if (googleResult) result.push(googleResult);
+          resultText = result.join('\n\n');
         }
+        
+        if (!resultText) resultText = `暂无翻译，如果是产品问题请提[issue](https://github.com/preflower/vscode-translation/issues)`
+
         return new vscode.Hover(resultText);
       },
     }

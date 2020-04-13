@@ -25,13 +25,16 @@ function translate(text: string) {
     }
     
     return translate;
+  }).catch((err: any) => {
+    return null;
   });
 }
 
 export default async function youdao(pendingText: string) {
   let pre = `**[有道词典](http://www.youdao.com/w/${language}/${escape(pendingText)})**\n\n`;
   let text = await translate(pendingText);
-  return pre + text;
+  if (text) return pre + text;
+  return;
 }
 
 interface Translate {
@@ -149,13 +152,14 @@ function _parseWebTrans($containor: any) {
     const text = removeTagsAndSpaces($(item).text());
     trans.push(text);
   });
-
+  if (trans.length) trans.unshift(`_网络释义_ \n\n`)
   return trans;
 }
 
 // 提取机器翻译
 function _parseMachineTrans($container: any) {
-  return removeTagsAndSpaces($container.find('.trans-container > p:nth-child(2)').text());
+  const text = removeTagsAndSpaces($container.find('.trans-container > p:nth-child(2)').text());
+  return `_机器翻译_ \n\n ${text}`;
 }
 
 // 移除 HTML 文本中的标签，合并多个空白为单个

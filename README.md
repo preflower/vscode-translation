@@ -17,8 +17,6 @@ This extension contributes the following settings:
 ## Release Notes
 
 ### 1.0.0
-
-#### New
-- 添加 Google 翻译
-- 添加 YouDao 词典
-- 添加 默认语言 配置项
+- 新增 Google 翻译
+- 新增 YouDao 词典
+- 新增 默认转换后语言 配置项

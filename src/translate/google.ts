@@ -1,12 +1,15 @@
 const vscode = require('vscode');
 const translate = require('translation-google');
+const { checkLanguage } = require('../utils/helper');
+
 translate.suffix = 'cn';
-const language = vscode.workspace.getConfiguration().get('easy-translator.defaultLanguage')
 
 export default async function google(pendingText: string) {
-  let pre = `**[谷歌翻译](https://translate.google.cn/?sl=auto&tl=${language}&text=${escape(pendingText)})**\n\n`;
+  const to = checkLanguage(pendingText);
+  let pre = `**[谷歌翻译](https://translate.google.cn/?sl=auto&tl=${to}&text=${escape(pendingText)})**\n\n`;
   let { text } = await translate(pendingText, {
-    to: language,
+    to,
   });
-  return pre + text;
+  if (text) return pre + text;
+  return;
 }
