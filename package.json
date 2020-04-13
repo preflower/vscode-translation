@@ -35,7 +35,7 @@
 				"easy-translator.defaultLanguage": {
 					"type": "string",
 					"default": "zh-cn",
-					"description": "配置要转换的语言，有道默认互换(因为有道转换规则 中-转换语言)，谷歌只支持单方向转换"
+					"description": "配置转换后的语言"
 				}
 			}
 		}
