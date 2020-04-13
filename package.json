@@ -2,7 +2,7 @@
 	"name": "vscode-translation",
 	"displayName": "Easy Translator",
 	"description": "A simple translation extension for VS Code",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "preflower",
 	"engines": {
 		"vscode": "^1.43.0"
