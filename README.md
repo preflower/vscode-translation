@@ -6,7 +6,9 @@ A simple translation extension for VS Code
 
 ## How to work
 
-Search `Easy Translator` in Extensions and install it
+1. Search `Easy Translator` in Extensions
+or Open [Easy Translator](https://marketplace.visualstudio.com/items?itemName=preflower.vscode-translation) link
+2. Install it
 
 ## Extension Settings
 
