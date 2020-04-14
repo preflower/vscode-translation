@@ -11,3 +11,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 #### 修复
 - 修复当存在转译字符时，有道页面直接404导致其他翻译也不展示问题
+
+## 1.0.0
+正式版上线
+#### 优化
+- 新增 母语功能，支持母语与其他语种互译 16号
+- 新增 必应词典 (感觉跟有道冲突，且只支持 中-英互译 不好用)
+- 新增 Linguee词典 替换 有道词典 在其他语言上的翻译问题
