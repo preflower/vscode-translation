@@ -19,7 +19,7 @@ function translate(text: string) {
     });
 }
 
-export default async function youdao(pendingText: string) {
+export default async function bing(pendingText: string) {
   let pre = `**[必应词典](https://cn.bing.com/dict/search?q=${escape(pendingText)})**\n\n`;
   let text = await translate(pendingText);
   if (text) return pre + text;

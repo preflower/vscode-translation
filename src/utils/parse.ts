@@ -36,7 +36,6 @@ export class Parse {
   // 提取机器翻译
   _parseMachineTrans($item: string) {
     const text = Parse.removeTagsAndSpaces(this.$container.find($item).text());
-    console.log(text);
     if (text) {
       const tran = `_机器翻译_ \n\n ${text}`;
       this.output.translates.push(tran);
@@ -59,7 +58,7 @@ export class Parse {
 export function Output2String(output: Translate) {
   let translate = '';
   const { phonetics, translates } = output;
-  if (phonetics) {
+  if (phonetics.length) {
     translate += `${phonetics.join('&nbsp;&nbsp;&nbsp;&nbsp;')}\n\n`;
   }
   translate += translates.join('\n\n');

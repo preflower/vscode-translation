@@ -9,7 +9,7 @@ export function activate(context: vscode.ExtensionContext) {
   console.log(
     'Congratulations, your extension "vsc-google-translate" is now active!'
   );
-
+  let lastData: number;
   const disposable = vscode.languages.registerHoverProvider(
     { scheme: "file" },
     {
@@ -18,7 +18,11 @@ export function activate(context: vscode.ExtensionContext) {
         let editor = vscode.window.activeTextEditor as any,
           selectionText = editor.document.getText(editor.selection),
           resultText = "";
+        // 为了解决谷歌翻译若访问频繁可能会 锁ip 问题
+        const currentDate = +new Date();
+        if (lastData && currentDate - lastData < 1000 ) return new vscode.Hover('');
         if (selectionText) {
+          lastData = currentDate;
           let youdaoResult = await youdao(selectionText);
           let googleResult = await google(selectionText);
           let bingResult = await bing(selectionText);
@@ -28,7 +32,6 @@ export function activate(context: vscode.ExtensionContext) {
           if (bingResult) result.push(bingResult);
           resultText = result.join("\n\n") || `暂无翻译，如果是产品问题请提[issue](https://github.com/preflower/vscode-translation/issues)`;
         }
-
         return new vscode.Hover(resultText);
       },
     }
