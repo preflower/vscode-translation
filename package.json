@@ -34,8 +34,13 @@
 			"properties": {
 				"easy-translator.defaultLanguage": {
 					"type": "string",
-					"default": "zh-cn",
-					"description": "配置转换后的语言"
+					"default": "en",
+					"description": "配置母语，CovertedLanguage将能够与其互译"
+				}, 
+				"easy-translator.covertedLanguage": {
+					"type": "string",
+					"default": "en",
+					"description": "将母语转换成其他语言"
 				}
 			}
 		}
