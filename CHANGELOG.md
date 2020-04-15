@@ -21,3 +21,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - 新增 选择翻译功能（目前支持翻译：有道，必应，谷歌，Linguee）
 - 新增 必应词典（感觉跟有道冲突，且只支持 中-英互译 不好用）
 - 新增 Linguee词典 替换 有道词典 在其他语言上的翻译问题
+
+## 1.0.2
+#### 修复
+- 修复 [有道翻译无法将其他语言，例如 日语转为 中文](https://github.com/preflower/vscode-translation/issues/3) 错误
+- 修复 谷歌翻译互译问题
+- 修复 有道翻译 在部分语言样式展示异常问题
