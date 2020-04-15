@@ -2,7 +2,7 @@
 	"name": "vscode-translation",
 	"displayName": "Easy Translator",
 	"description": "A simple translation extension for VS Code",
-	"version": "0.0.2",
+	"version": "1.0.0",
 	"publisher": "preflower",
 	"engines": {
 		"vscode": "^1.43.0"
@@ -34,13 +34,18 @@
 			"properties": {
 				"easy-translator.defaultLanguage": {
 					"type": "string",
-					"default": "en",
-					"description": "配置母语，CovertedLanguage将能够与其互译"
+					"default": "zh-cn",
+					"description": "Translate other languages ​​into this language. options: zh-cn, en"
 				}, 
 				"easy-translator.covertedLanguage": {
 					"type": "string",
 					"default": "en",
-					"description": "将母语转换成其他语言"
+					"description": "If the text language is the same as the default language, convert to that language. options: zh-cn, en, jap, fr, ko"
+				},
+				"easy-translator.dictionary": {
+					"type": "Array",
+					"default": ["YouDao", "Bing", "Google", "Linguee"],
+					"description": "Configure available dictionaries. options: YouDao, Bing, Google, Linguee"
 				}
 			}
 		}

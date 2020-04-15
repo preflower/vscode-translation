@@ -1,4 +1,5 @@
 import { Parse, Output2String } from "../utils/parse";
+import { isInDictionary } from '../utils/helper';
 const got = require("got");
 
 function translate(text: string) {
@@ -20,6 +21,7 @@ function translate(text: string) {
 }
 
 export default async function bing(pendingText: string) {
+  if (!isInDictionary('Bing')) return;
   let pre = `**[必应词典](https://cn.bing.com/dict/search?q=${escape(pendingText)})**\n\n`;
   let text = await translate(pendingText);
   if (text) return pre + text;

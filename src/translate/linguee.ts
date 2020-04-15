@@ -1,5 +1,5 @@
 import { Parse, Output2String } from "../utils/parse";
-import { Languages, checkLanguage } from '../utils/helper';
+import { Languages, checkLanguage, isInDictionary } from '../utils/helper';
 const got = require("got");
 
 const covertedLanguages: Languages = {
@@ -27,6 +27,7 @@ function translate(text: string) {
 }
 
 export default async function linguee(pendingText: string) {
+  if (!isInDictionary('Linguee')) return;
   let pre = `**[Linguee](https://www.linguee.com/english-chinese/search?source=auto&query=${escape(pendingText)})**\n\n`;
   let text = await translate(pendingText);
   if (text) return pre + text;

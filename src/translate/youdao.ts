@@ -1,5 +1,5 @@
 import { Parse, Output2String } from "../utils/parse";
-import { Languages, checkLanguage } from "../utils/helper";
+import { Languages, checkLanguage, isInDictionary } from "../utils/helper";
 const got = require("got");
 
 const languages: Languages = {
@@ -33,6 +33,7 @@ function translate(text: string) {
 }
 
 export default async function youdao(pendingText: string) {
+  if (!isInDictionary('YouDao')) return;
   let language = checkLanguage(pendingText),
     // fixed: 有道传递错误参数不会直接机器翻译bug
     to = languages[language] || `/${language}`;

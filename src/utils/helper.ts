@@ -1,5 +1,7 @@
 const vscode = require('vscode');
 const defaultLanguage = vscode.workspace.getConfiguration().get('easy-translator.defaultLanguage')
+const covertedLanguage = vscode.workspace.getConfiguration().get('easy-translator.covertedLanguage')
+const dictionary = vscode.workspace.getConfiguration().get('easy-translator.dictionary');
 
 export interface Languages {
   [propName: string]: string | RegExp
@@ -29,3 +31,15 @@ export function checkLanguage(text: string) {
 
 // 区分中/英文母语
 export const isDefaultEnglish = defaultLanguages[defaultLanguage] === 'english'
+
+// 判断传入的语言是否是母语，若是则将其转换成 CovertedLanguage
+export function handlerDefaultLanguage(text: string) {
+  const language = checkLanguage(text);
+  if (language === defaultLanguage) return covertedLanguage;
+  return defaultLanguage;
+}
+
+// 判断语言是否在词典中
+export function isInDictionary(name: string) {
+  return ~dictionary.indexOf(name) ? true : false;
+}
