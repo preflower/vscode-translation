@@ -36,6 +36,13 @@ export const isDefaultEnglish = defaultLanguages[defaultLanguage] === 'english'
 export function handlerDefaultLanguage(text: string) {
   const language = checkLanguage(text);
   if (language === defaultLanguage) return covertedLanguage;
+  return language;
+}
+
+// 判断传入的语言是否是母语，若是则将其转换成 CovertedLanguage; 若不是则返回母语
+export function handlerNeedCovertedLanguage(text: string) {
+  const language = checkLanguage(text);
+  if (language === defaultLanguage) return covertedLanguage;
   return defaultLanguage;
 }
 

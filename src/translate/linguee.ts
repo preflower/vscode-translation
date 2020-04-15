@@ -1,16 +1,17 @@
 import { Parse, Output2String } from "../utils/parse";
-import { Languages, checkLanguage, isInDictionary } from '../utils/helper';
+import { Languages, handlerDefaultLanguage, isInDictionary } from '../utils/helper';
 const got = require("got");
 
 const covertedLanguages: Languages = {
   'zh-cn': 'chinese',
   'en': 'english',
-  'jp': 'japanese',
+  'jap': 'japanese',
   'fr': 'french',
 }
 
 function translate(text: string) {
-  const second = covertedLanguages[checkLanguage(text)];
+  const second = covertedLanguages[handlerDefaultLanguage(text)];
+  console.log(second);
   if(!second) return;
   return got
     .get(`https://www.linguee.com/english-${second}/search?source=auto&query=${text}`)

@@ -1,5 +1,9 @@
 import { Parse, Output2String } from "../utils/parse";
-import { Languages, checkLanguage, isInDictionary } from "../utils/helper";
+import {
+  Languages,
+  handlerDefaultLanguage,
+  isInDictionary,
+} from "../utils/helper";
 const got = require("got");
 
 const languages: Languages = {
@@ -9,7 +13,7 @@ const languages: Languages = {
 function translate(text: string) {
   // 编码
   let keywords = encodeURIComponent(text),
-    language = checkLanguage(text),
+    language = handlerDefaultLanguage(text),
     // fixed: 有道传递错误参数不会直接机器翻译bug
     to = languages[language] || `/${language}`;
   return got
@@ -23,7 +27,6 @@ function translate(text: string) {
       parser._parseMachineTrans(
         "#fanyiToggle .trans-container > p:nth-child(2)"
       );
-
       return Output2String(parser.output);
     })
     .catch(() => {
@@ -32,11 +35,13 @@ function translate(text: string) {
 }
 
 export default async function youdao(pendingText: string) {
-  if (!isInDictionary('YouDao')) return;
-  let language = checkLanguage(pendingText),
-    // fixed: 有道传递错误参数不会直接机器翻译bug
+  if (!isInDictionary("YouDao")) return;
+  let language = handlerDefaultLanguage(pendingText),
+    // fixed: 有道传递错误参数不会直接机器翻译bugce s
     to = languages[language] || `/${language}`;
-  let pre = `**[有道词典](http://www.youdao.com/w${to}/${escape(pendingText)})**\n\n`;
+  let pre = `**[有道词典](http://www.youdao.com/w${to}/${escape(
+    pendingText
+  )})**\n\n`;
   let text = await translate(pendingText);
   if (text) return pre + text;
   return;
@@ -56,12 +61,11 @@ function parseNormalTrans(parser: Parse) {
       const arr = $(item).text().split(". ");
       tran = `**${arr[0]}** &nbsp;&nbsp; ${arr[1]}`;
     } else {
-      tran = text;
+      tran = Parse.removeTagsAndSpaces(text);
     }
-
     trans.push(tran);
   });
-
+  
   /**
    * 可能是中文
    */
@@ -82,7 +86,17 @@ function parseNormalTrans(parser: Parse) {
           result.push(tran);
         }
       });
-    trans.push(result.join("; "));
+    if(result.length) trans.push(result.join("; "));
+  }
+  
+  // 提取汉日翻译
+  if (!trans.length) {
+    $container
+      .find('li .sense-title')
+      .each((index: number, item: any) => {
+        const text = Parse.removeTagsAndSpaces($(item).text());
+        trans.push(text)
+      });
   }
 
   return trans;
