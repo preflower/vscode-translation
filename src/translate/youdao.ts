@@ -12,7 +12,6 @@ function translate(text: string) {
     language = checkLanguage(text),
     // fixed: 有道传递错误参数不会直接机器翻译bug
     to = languages[language] || `/${language}`;
-  console.log(language);
   return got
     .get(`http://www.youdao.com/w${to}/${keywords}`)
     .then((res: any) => {
