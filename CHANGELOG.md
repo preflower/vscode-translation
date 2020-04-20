@@ -27,3 +27,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - 修复 [有道翻译无法将其他语言，例如 日语转为 中文](https://github.com/preflower/vscode-translation/issues/3) 错误
 - 修复 谷歌翻译互译问题
 - 修复 有道翻译 在部分语言样式展示异常问题
+
+## 1.0.3
+#### 修复
+- 修复 [当选中某个单词后，鼠标放到了其他单词上，会弹出选中部分的翻译](https://github.com/preflower/vscode-translation/issues/4) 错误
