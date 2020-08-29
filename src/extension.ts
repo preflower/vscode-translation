@@ -20,6 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
         let editor = vscode.window.activeTextEditor as any,
           selectionText = editor.document.getText(editor.selection),
           resultText = "";
+        if (!isInSelectedText(position, editor.selection)) return;
         // 为了解决谷歌翻译若访问频繁可能会 锁ip 问题
         const currentDate = +new Date();
         if (lastData && currentDate - lastData < 1000)
@@ -46,4 +47,15 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
   context.subscriptions.push(disposable);
+}
+
+// 判断鼠标是否在选中区域
+function isInSelectedText(position: any, selectedPosition: any) {
+  const { line: startLine, character: startCharacter } = selectedPosition.start;
+  const { line: endLine, character: endCharacter } = selectedPosition.end;
+  const { line, character } = position;
+  if (startLine < line && line < endLine) { return true;}
+  else if (startLine === line && character >= startCharacter) { return true;}
+  else if (line === endLine && character <= endCharacter) { return true;}
+  return false; 
 }
