@@ -1,7 +1,7 @@
 import { Parse, Output2String } from "../utils/parse";
 import {
   Languages,
-  handlerDefaultLanguage,
+  handlerNeedCovertedLanguage,
   isInDictionary,
 } from "../utils/helper";
 const got = require("got");
@@ -13,7 +13,7 @@ const languages: Languages = {
 function translate(text: string) {
   // 编码
   let keywords = encodeURIComponent(text),
-    language = handlerDefaultLanguage(text),
+    language = handlerNeedCovertedLanguage(text),
     // fixed: 有道传递错误参数不会直接机器翻译bug
     to = languages[language] || `/${language}`;
   return got
@@ -36,8 +36,8 @@ function translate(text: string) {
 
 export default async function youdao(pendingText: string) {
   if (!isInDictionary("YouDao")) return;
-  let language = handlerDefaultLanguage(pendingText),
-    // fixed: 有道传递错误参数不会直接机器翻译bugce s
+  let language = handlerNeedCovertedLanguage(pendingText),
+    // fixed: 有道传递错误参数不会直接机器翻译bug
     to = languages[language] || `/${language}`;
   let pre = `**[有道词典](http://www.youdao.com/w${to}/${escape(
     pendingText

@@ -20,19 +20,21 @@ This extension contributes the following settings:
 
 | Configure | Default | Options |
 |-|-|-|
-| easy-translator.defaultLanguage | zh-cn | en<br>zh-cn
-| easy-translator.covertedLanguage | en | en(english)<br>zh-cn(chinese)<br>jap(japanese)<br>fr(french)<br>ko(korea): only support in YouDao
+| easy-translator.defaultLanguage | zh-cn | en<br>zh-cn<br>pt
+| easy-translator.covertedLanguage | en | en(English)<br>zh-cn(Chinese)<br>jap(Japanese)<br>fr(French)<br>ko(Korea): only support in YouDao<br>pt(Portuguese)
 | easy-translator.dictionary | ['YouDao', 'Bing', 'Google', 'Linguee'] | YouDao<br>Bing<br>Google<br>Linguee
 
 ## Release Notes
 
 ### 1.0.0
-- 新增 Google 翻译
-- 新增 YouDao 词典
-- 新增 Linguee 词典
-- 新增 Bing 词典
-- 新增 默认转换后语言(covertedLanguage) 配置项
-- 新增 母语(defaultLanguage) 配置项
-- 新增 字典（dictionary) 配置项
-- 支持 母语 与其他语言互译
+- Google Added
+- YouDao Added
+- Linguee Added
+- Bing Added
+- Add covertedLanguage config
+- Add defaultLanguage config
+- Add dictionary config
 - 因国内问题，Linguee翻译返回会较慢，所以母语设置为'en'会启动Linguee，母语设置为'cn'会启动YouDao、Bing，且词典列中必须有该词典
+
+### 1.1.0
+- Portuguese Added (support in Google and Linguee)
