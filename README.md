@@ -18,7 +18,7 @@ This extension contributes the following settings:
 * `easy-translator.covertedLanguage`: If the text language is the same as the default language, convert to that language.
 * `easy-translator.dictionary`: Configure available dictionary libraries.
 
-| Configure | Default | Options |
+| Configure | Default | Options |
 |-|-|-|
 | easy-translator.defaultLanguage | zh-cn | en<br>zh-cn<br>pt
 | easy-translator.covertedLanguage | en | en(English)<br>zh-cn(Chinese)<br>jap(Japanese)<br>fr(French)<br>ko(Korea): only support in YouDao<br>pt(Portuguese)
